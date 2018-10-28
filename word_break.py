@@ -57,8 +57,6 @@ if __name__ == '__main__':
     target = ['creamcupmango']
     target_copy = target.copy()
 
-    #check the starting character against the dictionary character and if present cut that length
-
     start_time = time.time()
     word_split = check_solution_2(target_copy,dictionary)
     end_time = time.time()

@@ -2,7 +2,7 @@
 Given a string, reverse the words of string
 Example:
 String: "This is a string"
-Output: 'sihT', 'si', 'a', 'gnirts'
+Output  : 'sihT', 'si', 'a', 'gnirts'
 """
 
 def reverse_words(string):
@@ -32,5 +32,6 @@ if __name__ == '__main__':
     string_copy = string.copy()
 
     reversed = reverse_words(string_copy)
+    reversed = reverse_string(reversed)
 
     print(reversed)

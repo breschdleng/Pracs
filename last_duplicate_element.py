@@ -6,7 +6,7 @@ If no such element found print a message.
 """
 
 """
-straightforward way 
+O(n)
 """
 def solution_1(a):
 
@@ -32,15 +32,41 @@ def solution_1(a):
         return last_repeating_element, last_index
 
 
-def solution_2():
-    return None
+def solution_bfs(a, num):
+    list_len = len(a)
+
+    #check for even or odd
+    if(list_len%2 == 0):
+        half = int((list_len+1)/2)
+    else:
+        half = int(list_len/2)
+
+        print(half)
+
+    # todo incomplete
+    for i in range(0,list_len):
+        if(a[half] == num):
+            return half
+        elif num < a[half]:
+            return solution_bfs(a[:half],num)
+        elif num > a[half]:
+            return solution_bfs(a[half:],num)
+
 
 if __name__ == '__main__':
 
-    a = [1,2,2,3,4,5,7,0,1]
+    a = [1,2,2,3,4,5,7]
 
+    #O(n)
     b = solution_1(a)
     print(b)
+
+    #O(nlogn)
+    #not related to finding the last duplicate element but
+    #good practice for binary search tree
+
+    found_index = solution_bfs(a,5)
+    print(found_index)
 
 
 

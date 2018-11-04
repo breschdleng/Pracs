@@ -2,67 +2,7 @@
 construct a Binary Search Tree from a sorterd array or linked list using recursion
 """
 
-def in_order_traversal(str,root):
 
-    """ visit left, root and right sub-trees"""
-    if(root.left!=None):
-        print(str)
-        in_order_traversal("L", root.left)
-
-    print(str,root.value)
-
-    if (root.right != None):
-        print(str)
-        in_order_traversal("R",root.right)
-
-
-def pre_order_traversal(str,root):
-    """ visit root, left and right sub-trees"""
-
-    #print root value
-    if(root!=None):
-        print(root.value)
-
-    #then left sub-tree
-    if(root.left!=None):
-        pre_order_traversal("L", root.left)
-
-    # then right sub-tree
-    if (root.right != None):
-        pre_order_traversal("R",root.right)
-
-
-
-def level_order_traversal(str,root):
-    """ visit root, left and right sub-trees"""
-
-    #print root value
-    if(root!=None):
-        print(root.value)
-
-    #then left sub-tree
-    if(root.left!=None):
-        pre_order_traversal("L", root.left)
-
-    # then right sub-tree
-    if (root.right != None):
-        pre_order_traversal("R",root.right)
-
-
-def post_order_traversal(str,root):
-    """ visit root, left and right sub-trees"""
-
-    #left sub-tree
-    if(root.left!=None):
-        post_order_traversal("L", root.left)
-
-    # then right sub-tree
-    if (root.right != None):
-        post_order_traversal("R",root.right)
-
-    # print root value
-    if (root != None):
-        print(root.value)
 
 def find_missing_element(root):
     """given a binary search tree find a missing element"""
@@ -103,6 +43,62 @@ class BinarySearchTree:
 
         return node
 
+    def in_order_traversal(self,str, root):
+
+        """ visit left, root and right sub-trees"""
+        if (root.left != None):
+            self.in_order_traversal("L", root.left)
+
+        print(root.value)
+
+        if (root.right != None):
+            self.in_order_traversal("R", root.right)
+
+    def pre_order_traversal(self, str, root):
+        """ visit root, left and right sub-trees"""
+
+        # print root value
+        if (root != None):
+            print(root.value)
+
+        # then left sub-tree
+        if (root.left != None):
+            self.pre_order_traversal("L", root.left)
+
+        # then right sub-tree
+        if (root.right != None):
+            self.pre_order_traversal("R", root.right)
+
+    def level_order_traversal(self, str, root):
+        """ visit root, left and right sub-trees"""
+
+        # print root value
+        if (root != None):
+            print(root.value)
+
+        # then left sub-tree
+        if (root.left != None):
+            self.pre_order_traversal("L", root.left)
+
+        # then right sub-tree
+        if (root.right != None):
+            self.pre_order_traversal("R", root.right)
+
+    def post_order_traversal(self, str, root):
+        """ visit root, left and right sub-trees"""
+
+        # left sub-tree
+        if (root.left != None):
+            self.post_order_traversal("L", root.left)
+
+        # then right sub-tree
+        if (root.right != None):
+            self.post_order_traversal("R", root.right)
+
+        # print root value
+        if (root != None):
+            print(root.value)
+
 if __name__ == '__main__':
 
     arr = [1,2,4,5,7,30,40,55,70,100]
@@ -119,11 +115,11 @@ if __name__ == '__main__':
 
     print("in-order-traversal")
 
-    in_order_traversal("in-order", root)
+    bst.in_order_traversal("in-order", root)
     print("pre-order-traversal")
-    pre_order_traversal("pre-order", root)
+    bst.pre_order_traversal("pre-order", root)
     print("post-order-traversal")
-    post_order_traversal("post-order", root)
+    bst.post_order_traversal("post-order", root)
 
     #find_missing_element(root)
     #find missing element

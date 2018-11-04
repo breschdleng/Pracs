@@ -32,6 +32,23 @@ def pre_order_traversal(str,root):
         pre_order_traversal("R",root.right)
 
 
+
+def level_order_traversal(str,root):
+    """ visit root, left and right sub-trees"""
+
+    #print root value
+    if(root!=None):
+        print(root.value)
+
+    #then left sub-tree
+    if(root.left!=None):
+        pre_order_traversal("L", root.left)
+
+    # then right sub-tree
+    if (root.right != None):
+        pre_order_traversal("R",root.right)
+
+
 def post_order_traversal(str,root):
     """ visit root, left and right sub-trees"""
 
@@ -48,6 +65,8 @@ def post_order_traversal(str,root):
         print(root.value)
 
 def find_missing_element(root):
+    """given a binary search tree find a missing element"""
+
     #do an in-order traversal given a binary tree
 
     print(in_order_traversal(root))

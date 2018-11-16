@@ -18,6 +18,49 @@
 
 import numpy as np
 
+def find_num_recur(arr, s, st, e):
+
+    mid = int((st + e) / 2)
+
+    if arr == None or mid < 0:
+        return None
+
+    mid_check = (mid > 0 or mid == 0) and mid < len(arr)-1
+
+    if s > arr[mid] and mid_check:
+        e -= 1
+        return find_num_recur(arr,s,st,e)
+
+    elif s < arr[mid] and mid_check:
+        st += 1
+        return find_num_recur(arr, s, st, e)
+    elif s == arr[mid] and mid_check:
+        return True
+    else:
+        return None
+
+
+def recursive_variant(arr, target):
+
+    length = len(arr)
+
+    arr = sorted(arr)
+    result = []
+
+    for i in range(length):
+
+        a = target - np.abs(arr[i])
+
+        for j in range(i + 1, len(arr) - 1):
+            s = a - arr[j]
+            st = 0
+            e = len(arr)-1
+
+            if(find_num_recur(arr,s,st,e)):
+                result.append((arr[i],arr[j],s))
+    return result
+
+
 def find_three_nos_to_sum(arr, target):
 
     if arr == None:
@@ -53,7 +96,7 @@ def find_three_nos_to_sum(arr, target):
                 elif search_no_2 == arr[mid]:
                     number = search_no_2
 
-                    result.append([arr[i],arr[j],number])
+                    result.append((arr[i],arr[j],number))
 
                     end = start
 
@@ -63,4 +106,14 @@ if __name__ == '__main__':
 
     arr=[2,1,4,5,7,2]
     target = 8
-    print(find_three_nos_to_sum(arr, target))
+
+    #Solution 1:
+    found_sol_1 = find_three_nos_to_sum(arr, target)
+
+
+   #Solution 2:
+    found_recur = recursive_variant(arr, target)
+    unique_elem_1 = set(found_sol_1)
+    unique_elem_2 = set(found_recur)
+    print("solution 1",unique_elem_1)
+    print("solution using recursion",unique_elem_2)

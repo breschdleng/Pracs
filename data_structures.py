@@ -101,6 +101,22 @@ class Stack:
 
         self.size -=1
 
+    """reverse a single linked list"""
+    def reverse(self):
+
+        # 1 -> 2 -> 4 -> 5
+
+        th = self.head
+        tt = self.tail
+        tc = None
+        self.head = tt
+        while(th.next == None):
+
+            self.head.next = th
+            self.head.next = self.head.next.next
+
+            th = th.next
+
 
     def print_stack(self):
 
@@ -177,19 +193,23 @@ if __name__ == '__main__':
     stack.push(-6)
     stack.push(-9)
 
-    print("orig")
+    #stack.reverse()
     stack.print_stack()
-    val1 = stack.pop()
-    val2 = stack.pop()
-
-    val3 = stack.pop()
-    val4 = stack.pop()
 
 
-    print("popping", val1, val2, val3, val4)
+    #print("orig")
+    #stack.print_stack()
+    #val1 = stack.pop()
+    #val2 = stack.pop()
+
+    #val3 = stack.pop()
+    #val4 = stack.pop()
+
+
+    #print("popping", val1, val2, val3, val4)
     #stack.insert(4,-90)
 
-    stack.print_stack()
+    #stack.print_stack()
 
 
     print("Queue")
@@ -200,8 +220,8 @@ if __name__ == '__main__':
 
     q.en_queue(4020)
     q.en_queue(2087)
-    q.print_stack()
-    val = q.de_queue()
-    print("pop",val)
+   # q.print_stack()
+    #val = q.de_queue()
+    #print("pop",val)
 
-    q.print_stack()
+    #q.print_stack()
